@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 
-run->_env { [200, {'Content-Type' => 'application/json'}, [{msg: 'Hello World!'}.to_json]] }
+run ->(_) { [200, { 'Content-Type' => 'application/json' }, [{ msg: 'Hello World!' }.to_json]] }
