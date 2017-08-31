@@ -1,5 +1,16 @@
 # frozen_string_literal: true
 
-require 'json'
+require_relative 'config/application'
 
-run ->(_) { [200, { 'Content-Type' => 'application/json' }, [{ msg: 'Hello World!' }.to_json]] }
+generate_secure_hex = proc { SecureRandom.hex(32) }
+
+cookies_parameters = {
+  key: 'rack.session',
+  domain: 'foo.com',
+  secret: generate_secure_hex.call,
+  old_secret: generate_secure_hex.call
+}
+
+use Rack::CommonLogger
+use Rack::Session::Cookie, cookies_parameters
+run Rack::Cascade.new [API]
