@@ -8,7 +8,8 @@ WORKDIR ${APP_PATH}
 
 RUN gem install \
   bundler \
-  rake
+  rake \
+  rubocop
 
 CMD ["bash"]
 
