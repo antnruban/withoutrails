@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
 class API < Grape::API
-  get :hello do
-    { hello: 'world' }
-  end
+  insert_after Grape::Middleware::Formatter, Grape::Middleware::Logger
+  content_type :json, 'application/json'
+  format :json
 
-  get :'/' do
-    { hello: 'hello root' }
-  end
+  mount V1::FakeEndpoint
 end

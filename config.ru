@@ -11,6 +11,5 @@ cookies_parameters = {
   old_secret: generate_secure_hex.call
 }
 
-use Rack::CommonLogger
 use Rack::Session::Cookie, cookies_parameters
 run Rack::Cascade.new [API]

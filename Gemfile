@@ -4,5 +4,6 @@ source 'https://rubygems.org'
 ruby '2.4.1'
 
 # Application dependencies.
-gem 'grape'
-gem 'rack'
+gem 'grape', '~> 1.0.0'
+gem 'grape-middleware-logger', '~> 1.9.0'
+gem 'rack', '~> 2.0.3'
