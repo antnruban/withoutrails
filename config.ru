@@ -1,3 +1,4 @@
+#\-p 3000 --host 0.0.0.0 -q
 # frozen_string_literal: true
 
 require_relative 'config/application'
@@ -11,5 +12,6 @@ cookies_parameters = {
   old_secret: generate_secure_hex.call
 }
 
+use Rack::Reloader, 0
 use Rack::Session::Cookie, cookies_parameters
-run Rack::Cascade.new [API]
+run API
