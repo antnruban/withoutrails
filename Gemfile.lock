@@ -37,6 +37,8 @@ GEM
     rack (2.0.3)
     rack-accept (0.4.5)
       rack (>= 0.4)
+    rack-protection (2.0.0)
+      rack
     thin (1.7.2)
       daemons (~> 1.0, >= 1.0.9)
       eventmachine (~> 1.0, >= 1.0.4)
@@ -57,6 +59,7 @@ DEPENDENCIES
   grape (~> 1.0.0)
   grape-middleware-logger (~> 1.9.0)
   rack (~> 2.0.3)
+  rack-protection
   thin (~> 1.7.2)
 
 RUBY VERSION
