@@ -6,7 +6,6 @@ The main target, to create Rack application without Rails framework.
 * Test framework support.
 * Database connection.
 * Sources hot reloading (grape issue).
-* Different environments.
 * write README ;)
 
 ### Application HOWTO:
@@ -29,9 +28,9 @@ The main target, to create Rack application without Rails framework.
   ```
   where:
   * `--name` container name, feel free to change it.
-  * `--rm` container will be automatically removed after usage.
-  * `-v` link project directory as volume, it means you make changes locally in your favorite editor and it's applying in container.
-  * `-itP` run container with interactive session (bash in that case) and link ports from `withoutrails` image.
+  * `--rm` container will be automatically removed after stop.
+  * `-v` link project directory as volume, it means you make changes locally in your favorite editor and they are applying in container.
+  * `-itP` run container with interactive session (bash in that case) and link ports from `withoutrails` image to host.
 * Execute certain bash command at container, `bundle install` for instance:
 
   ```
