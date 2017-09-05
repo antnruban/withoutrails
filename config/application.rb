@@ -2,7 +2,7 @@
 
 # Require all gems listed at Gemfile.
 require File.expand_path('../boot', __FILE__)
+require 'active_support/dependencies'
 
-# Require application files.
-# TODO: Find right way to load application according convention.
-Dir.glob(File.join('./app', '**', '*.rb'), &method(:require))
+paths_to_load = %w[./app]
+ActiveSupport::Dependencies.autoload_paths = paths_to_load
