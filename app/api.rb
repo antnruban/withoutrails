@@ -9,6 +9,8 @@ class API < Grape::API
 
   # If requested route was not found, return the client error.
   route :any, '*path' do
-    error!({ message: 'Route not found' }, 404)
+    error_status = 404
+    message = "Route '#{request.path}' wasn't found"
+    error!({ errors: [{ status: error_status, title: 'Ruting Error', details: message }] }, error_status)
   end
 end
