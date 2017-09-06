@@ -5,3 +5,6 @@ Metrics/LineLength:
 # Disable class documentation
 Style/Documentation:
   Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false

@@ -74,10 +74,10 @@ DEPENDENCIES
   activerecord (~> 5.1.3)
   grape (~> 1.0.0)
   grape-middleware-logger (~> 1.9.0)
-  pg
+  pg (~> 0.21.0)
   pry (~> 0.10.4)
   rack (~> 2.0.3)
-  rack-protection
+  rack-protection (= 2.0.0)
   thin (~> 1.7.2)
 
 RUBY VERSION

@@ -1,15 +1,16 @@
 # frozen_string_literal: true
 
+# rubocop:disable BlockLength
+
 require 'active_record'
-require 'yml'
+require 'yaml'
 
 namespace :db do
-  db_config       = YAML.safe_load(File.open('config/database.yml'))
-  db_config_admin = db_config.merge('database' => 'postgres', 'schema_search_path' => 'public')
+  db_config = YAML.safe_load(File.open('config/database.yml'))[ENV['RACK_ENV'] || 'development']
 
   desc 'Create the database'
   task :create do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+    ActiveRecord::Base.establish_connection(db_config)
     ActiveRecord::Base.connection.create_database(db_config['database'])
     puts 'Database created.'
   end
@@ -24,13 +25,13 @@ namespace :db do
 
   desc 'Drop the database'
   task :drop do
-    ActiveRecord::Base.establish_connection(db_config_admin)
+    ActiveRecord::Base.establish_connection(db_config)
     ActiveRecord::Base.connection.drop_database(db_config['database'])
     puts 'Database deleted.'
   end
 
   desc 'Reset the database'
-  task :reset => [:drop, :create, :migrate]
+  task reset: %i[drop create migrate]
 
   desc 'Create a db/schema.rb file that is portable against any DB supported by AR'
   task :schema do
@@ -52,14 +53,19 @@ namespace :g do
     migration_class = name.split('_').map(&:capitalize).join
 
     File.open(path, 'w') do |file|
-      file.write <<-EOF
+      file.write <<~RUBY
+        # frozen_string_literal: true
+
         class #{migration_class} < ActiveRecord::Migration
           def self.up
+            # create_table, add_column
           end
+
           def self.down
+            # drop_table, delete_column
           end
         end
-      EOF
+      RUBY
     end
 
     puts "Migration #{path} created"

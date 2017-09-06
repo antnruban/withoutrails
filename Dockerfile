@@ -1,6 +1,8 @@
 FROM ruby:2.4.1
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  vim
 
 ENV APP_PATH /usr/src/app
 RUN mkdir -p ${APP_PATH}
