@@ -4,4 +4,4 @@ rvm:
 
 before_script: gem install rubocop
 
-script: rubocop app/ config/ models/ Gemfile config.ru Rakefile -c .rubocop.yml
+script: rubocop app/ config/ models/ Gemfile config.ru -c .rubocop.yml
