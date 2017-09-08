@@ -7,7 +7,7 @@ require 'yaml'
 
 namespace :db do
   db_config = YAML.safe_load(File.open('config/database.yml'))[ENV['RACK_ENV'] || 'development']
-  db_config_admin = db_config.merge({'database' => 'postgres', 'schema_search_path' => 'public'})
+  db_config_admin = db_config.merge('database' => 'postgres', 'schema_search_path' => 'public')
 
   desc 'Create the database'
   task :create do
