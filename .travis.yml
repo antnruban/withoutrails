@@ -1,0 +1,7 @@
+language: ruby
+rvm:
+  - 2.4.1
+
+before_script: gem install rubocop
+
+script: rubocop -c .rubocop.yml
