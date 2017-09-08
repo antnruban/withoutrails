@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable BlockLength
-
 require 'active_record'
 require 'yaml'
 
