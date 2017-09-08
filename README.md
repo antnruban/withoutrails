@@ -2,11 +2,12 @@
 #### Description:
 The main target, to create Rack application without Rails framework.
 #### TODO at Current Time:
-* Custom logger (Not required, JFF).
+* Custom logger in application config, with logfile support.
 * Test framework support.
 * Database connection.
 * Sources hot reloading (grape issue).
 * write README ;)
+* Provide smthg like decorator for +API+ class, when can be stored applications settings.
 
 ### Application HOWTO:
 * Run `bundle` in project root for gems installation.
