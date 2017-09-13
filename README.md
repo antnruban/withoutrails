@@ -9,6 +9,8 @@ The main target, to create Rack application without Rails framework.
 * Sources hot reloading (grape issue).
 * write README ;)
 * Provide smthg like decorator for +API+ class, when can be stored applications settings.
+* Use as db connector Sequel.
+* Apply DDD pattern.
 
 ### Application HOWTO:
 * Run `bundle` in project root for gems installation.
