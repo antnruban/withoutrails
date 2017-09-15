@@ -8,8 +8,8 @@ gem 'grape', '~> 1.0.0'
 gem 'grape-middleware-logger', '~> 1.9.0'
 gem 'rack', '~> 2.0.3'
 gem 'rack-protection', '2.0.0'
-gem 'activerecord', '~> 5.1.3'
-gem 'pg', '~> 0.21.0'
+gem 'sequel'
+gem 'pg'
 
 group :test, :development do
   gem 'pry', '~> 0.10.4'

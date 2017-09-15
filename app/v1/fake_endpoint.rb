@@ -3,7 +3,7 @@
 module V1
   class FakeEndpoint < Grape::API
     get :hello do
-      FishCard.create!
+      # FishCard.create!
       { hello: 'world' }
     end
 
