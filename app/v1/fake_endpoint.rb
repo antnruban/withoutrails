@@ -2,13 +2,14 @@
 
 module V1
   class FakeEndpoint < Grape::API
-    get :hello do
-      # FishCard.create!
-      { hello: 'world' }
-    end
+    namespace :fish_cards do
+      get do
+        FishCard.all
+      end
 
-    get :'/' do
-      { hello: 'hello root' }
+      get :create do
+        FishCard.create(message: 'message', description: 'description')
+      end
     end
   end
 end
