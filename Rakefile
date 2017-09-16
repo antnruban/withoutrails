@@ -1,16 +1,13 @@
 # frozen_string_literal: true
 
-require 'yaml'
 require 'sequel'
+require_relative './config/db_config'
 
 namespace :db do
-  db_config = YAML.safe_load(File.open('config/database.yml'))[ENV['RACK_ENV'] || 'development']
-  db_config_admin = db_config.merge('database' => 'postgres', 'schema_search_path' => 'public')
-
   desc 'Create the database'
   task :create do
-    Sequel.connect(db_config_admin) do |db|
-      db.execute "CREATE DATABASE #{db_config['database']}"
+    Sequel.connect(DB_ADMIN_CONFIG) do |db|
+      db.execute "CREATE DATABASE #{DB_CONFIG['database']}"
       puts 'Database created.'
     end
   end
@@ -18,15 +15,15 @@ namespace :db do
   desc 'Migrate the database'
   task :migrate do
     Sequel.extension :migration
-    DB = Sequel.connect(db_config)
+    DB = Sequel.connect(DB_CONFIG)
     Sequel::Migrator.run(DB, './db/migrate/', use_transactions: true)
     puts 'Database migrated.'
   end
 
   desc 'Drop the database'
   task :drop do
-    Sequel.connect(db_config_admin) do |db|
-      db.execute "DROP DATABASE IF EXISTS #{db_config['database']}"
+    Sequel.connect(DB_ADMIN_CONFIG) do |db|
+      db.execute "DROP DATABASE IF EXISTS #{DB_CONFIG['database']}"
       puts 'Database deleted.'
     end
   end
