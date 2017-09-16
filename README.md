@@ -2,7 +2,6 @@
 #### Description:
 The main target, to create Rack application without Rails framework.
 #### TODO at Current Time:
-* Use Sequel instead ActiveRecord.
 * Custom logger in application config, with logfile support.
 * Test framework support.
 * Database connection.
