@@ -8,7 +8,7 @@ gem 'grape', '~> 1.0.0'
 gem 'grape-middleware-logger', '~> 1.9.0'
 gem 'rack', '~> 2.0.3'
 gem 'rack-protection', '2.0.0'
-gem 'activerecord', '~> 5.1.3'
+gem 'sequel', '~> 5.0.0'
 gem 'pg', '~> 0.21.0'
 
 group :test, :development do

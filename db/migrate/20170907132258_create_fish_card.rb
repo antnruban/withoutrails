@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
-class CreateFishCard < ActiveRecord::Migration[5.1]
-  def self.up
-    create_table :fish_cards do |t|
-      t.column :message, :string
+Sequel.migration do
+  change do
+    create_table :fish_cards do
+      primary_key :id
+      String :message, null: false
     end
-  end
-
-  def self.down
-    # drop_table, delete_column
   end
 end
