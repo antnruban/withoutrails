@@ -1,4 +1,7 @@
 # Withoutrails
+
+[![Build Status](https://travis-ci.org/antnruban/withoutrails.svg?branch=master)](https://travis-ci.org/antnruban/withoutrails)
+
 #### Description:
 The main target, to create Rack application without Rails framework.
 #### TODO at Current Time:
