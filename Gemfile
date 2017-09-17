@@ -6,6 +6,7 @@ ruby '2.4.1'
 # Application dependencies.
 gem 'grape', '~> 1.0.0'
 gem 'grape-middleware-logger', '~> 1.9.0'
+gem 'jsonapi-serializers', '~> 1.0.0'
 gem 'rack', '~> 2.0.3'
 gem 'rack-protection', '2.0.0'
 gem 'sequel', '~> 5.0.0'

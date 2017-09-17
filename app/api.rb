@@ -4,6 +4,8 @@ class API < Grape::API
   insert_after Grape::Middleware::Formatter, Grape::Middleware::Logger
   content_type :json, 'application/json'
   format :json
+  formatter :json, V1::APIHelpers::SuccessFormatter
+  # error_formatter :json, V1::APIHelpers::ErrorFormatter
 
   mount V1::FakeEndpoint
 
