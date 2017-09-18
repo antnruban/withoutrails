@@ -8,7 +8,7 @@ module V1
       class << self
         def call(object, _)
           options = OPTIONS.merge(is_collection: object.is_a?(Array))
-          return JSONAPI::Serializer.serialize(object, options).to_json if is_model?(object)
+          return JSONAPI::Serializer.serialize(object, options).to_json if model?(object)
           return object.to_json if object.respond_to?(:to_json)
 
           MultiJson.dump(object)
@@ -16,7 +16,7 @@ module V1
 
         private
 
-        def is_model?(object)
+        def model?(object)
           object.is_a?(Sequel::Model) || object.is_a?(Array) && object.all? { |o| o.is_a?(Sequel::Model) }
         end
       end
