@@ -7,11 +7,9 @@ The main target, to create Rack application without Rails framework.
 #### TODO at Current Time:
 * Custom logger in application config, with logfile support.
 * Test framework support.
-* Database connection.
 * Sources hot reloading (grape issue).
 * write README ;)
 * Provide smthg like decorator for +API+ class, when can be stored applications settings.
-* Use as db connector Sequel.
 * Apply DDD pattern.
 
 ### Application HOWTO:
