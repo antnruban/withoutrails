@@ -13,7 +13,6 @@ module FishCards
   end
 end
 
-
 # TODO: place at separated file.
 class RecordNotFound < RuntimeError
 end
