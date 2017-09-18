@@ -13,6 +13,3 @@ module FishCards
     end
   end
 end
-
-class RecordNotFound < RuntimeError
-end
