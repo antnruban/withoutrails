@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module V1
-  class FakeEndpoint < Grape::API
+  class FakeEndpoint < V1::Base
     namespace :fish_cards do
       get do
         FishCard.all
