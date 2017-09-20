@@ -16,3 +16,11 @@ group :test, :development do
   gem 'pry', '~> 0.10.4'
   gem 'thin', '~> 1.7.2'
 end
+
+group :test do
+  gem 'rspec'
+  gem 'faker'
+  gem 'rack-test'
+  gem 'factory_girl'
+  gem 'database_cleaner'
+end

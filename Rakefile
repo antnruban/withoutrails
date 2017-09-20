@@ -3,6 +3,11 @@
 require 'sequel'
 require_relative './config/db_config'
 
+desc 'Run pry session with required application'
+task :console do
+  sh 'pry -r ./config/application'
+end
+
 namespace :db do
   desc 'Create the database'
   task :create do
