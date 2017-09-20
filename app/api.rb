@@ -6,8 +6,8 @@ class API < Grape::API
   format       :json
 
   rescue_from :all do |e|
-    body = JSONAPI::Serializer.serialize_errors(e.message)
-    error!(body, 404) if e.class == RecordNotFound
+    status = 404 if e.class == Application::RecordNotFound
+    error!(JSONAPI::Serializer.serialize_errors(e.message), status || 500)
   end
 
   mount V1::Base

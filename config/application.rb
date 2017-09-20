@@ -7,5 +7,9 @@ require 'active_support/dependencies'
 # Initialize configurations.
 Dir['./config/initializers/*.rb'].each { |file| require file }
 
-paths_to_load = %w[./app ./models]
-ActiveSupport::Dependencies.autoload_paths = paths_to_load
+# Autoload application sources.
+ActiveSupport::Dependencies.autoload_paths = %w[./app ./models]
+
+module Application
+  class RecordNotFound < RuntimeError; end
+end
