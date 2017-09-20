@@ -18,9 +18,9 @@ group :test, :development do
 end
 
 group :test do
-  gem 'rspec'
-  gem 'faker'
-  gem 'rack-test'
-  gem 'factory_girl'
-  gem 'database_cleaner'
+  gem 'rspec', '~> 3.6.0'
+  gem 'faker', '~> 1.8.4'
+  gem 'rack-test', '~> 0.7.0'
+  gem 'factory_girl', '~> 4.8.0'
+  gem 'database_cleaner', '~> 1.6.1'
 end
