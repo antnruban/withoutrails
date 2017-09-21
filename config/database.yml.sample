@@ -1,0 +1,17 @@
+# Copy database.yml.sample to database.yml and provide your settings
+
+development:
+  adapter: 'postgresql'
+  port: 'port'
+  host: 'host'
+  database: 'database_dev'
+  username: 'username'
+  password: 'password'
+
+test:
+  adapter: 'postgresql'
+  port: 'port'
+  host: 'host'
+  database: 'database_test'
+  username: 'username'
+  password: 'password'
