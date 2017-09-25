@@ -1,13 +1,13 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
-class User < Sequel::Model(:users)
-  one_to_many :allowed_feeds
-  one_to_many :listings
-  many_to_one :brokerage
+class User < ActiveRecord::Base
+  has_many :user_modules
+  has_many :allowed_feeds
+  has_many :listings
+  belongs_to :brokerage
 
   def brokerage_for_search
     return '' unless brokerage
     brokerage.name.downcase.gsub(/[^a-z0-9]+/i, '').gsub('brokerage', '')
   end
-  # %w(idx vow rebny)
 end

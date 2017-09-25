@@ -1,5 +1,5 @@
-# frozen_string_literal: true
+# # frozen_string_literal: true
 
-class AllowedFeed < Sequel::Model
-  one_to_many :users
+class AllowedFeed < ActiveRecord::Base
+  belongs_to :user
 end
