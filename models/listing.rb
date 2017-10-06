@@ -5,7 +5,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :user_listings, dependent: :destroy
 
-  before_save   :populate_realtor_for_search, :determine_visibility
+  before_save   :populate_realtor_for_search, :determine_visibility, :populate_custom_columns
   after_save    :unfeature_user_listings
 
   scope :all_agent_listings, lambda { |user|
