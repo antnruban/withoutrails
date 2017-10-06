@@ -43,7 +43,7 @@ class Listing < Sequel::Model(:listings)
     end
 
     def agent_featured_listings(user)
-      all_agent_listings_dataset(user).join(:user_listings, { listing_id: :id, featured: true, user_id: user.id }).all
+      all_agent_listings_dataset(user).join(:user_listings, listing_id: :id, featured: true, user_id: user.id).all
     end
 
     def agent_previosly_featured_listings(user)
@@ -53,13 +53,14 @@ class Listing < Sequel::Model(:listings)
     end
 
     def agent_removed_listings(user)
-      user_allowed_feeds_dataset(user).where(realtor_for_search: user.brokerage_for_search)
+      user_allowed_feeds_dataset(user)
+        .where(realtor_for_search: user.brokerage_for_search)
         .exclude(removed_at: nil).all
     end
 
     def search(listings_scope, query)
       listing_ids = listings_scope.map(&:id)
-      statement = Sequel.join([:ad_text, :mlsid, :address, :closest_intersection, :municipality, :postal_code])
+      statement = Sequel.join(%i[ad_text mlsid address closest_intersection municipality postal_code])
       where(id: listing_ids).where(statement.ilike("%#{query}%")).all
     end
 
