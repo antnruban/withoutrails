@@ -1,8 +1,8 @@
 # # frozen_string_literal: true
 
 class User < ActiveRecord::Base
-  has_many :user_modules
   has_many :allowed_feeds
+  has_many :user_listings
   has_many :listings
   belongs_to :brokerage
 
