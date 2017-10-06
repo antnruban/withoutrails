@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class Listing < Sequel::Model(:listings)
-  many_to_one :listing
+  many_to_one :user
+
+  before_save   :populate_realtor_for_search, :determine_visibility
+  after_save    :unfeature_user_listings
 
   class << self
     def active

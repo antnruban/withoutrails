@@ -2,6 +2,7 @@
 
 class User < Sequel::Model(:users)
   one_to_many :allowed_feeds
+  one_to_many :user_listings
   one_to_many :listings
   many_to_one :brokerage
 
@@ -9,5 +10,4 @@ class User < Sequel::Model(:users)
     return '' unless brokerage
     brokerage.name.downcase.gsub(/[^a-z0-9]+/i, '').gsub('brokerage', '')
   end
-  # %w(idx vow rebny)
 end
