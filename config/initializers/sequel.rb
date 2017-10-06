@@ -8,14 +8,16 @@ DB.logger = Logger.new(STDOUT)
 
 # Below class contains common configurations, hooks or methods for all Sequel's model.
 
-class Sequel::Model
-  def before_create
-    self.created_at ||= Time.now
-    super
-  end
+module Sequel
+  class Model
+    def before_create
+      self.created_at ||= Time.now
+      super
+    end
 
-  def before_update
-    self.updated_at = Time.now
-    super
+    def before_update
+      self.updated_at = Time.now
+      super
+    end
   end
 end
