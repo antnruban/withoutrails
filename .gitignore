@@ -1,3 +1,4 @@
 .ruby-version
 database.yml
 *.log
+schema
