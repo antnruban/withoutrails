@@ -57,4 +57,34 @@ namespace :g do
     puts "Migration #{path} created"
     abort # needed stop other tasks
   end
+
+  desc 'Generate `db/schema` example'
+  task :schema do
+    DB = Sequel.connect(DB_CONFIG)
+    path = File.expand_path('db/schema')
+
+    File.open(path, 'a') do |file|
+      file.truncate(0)
+      table_info = ''
+      DB.tables.each do |table_name|
+        table_info += "\r\nTable: '#{table_name}'"
+        DB.schema(table_name).map { |field| table_info += parse_fields(field) }
+        table_info += "\r\n"
+        indexes = DB.indexes(table_name)
+        indexes.each_key { |index| table_info += "  #{index}: #{parse_index(indexes[index])}" }
+      end
+      file.write(table_info)
+    end
+  end
+
+  def parse_fields(field)
+    field_name, field_opt = field
+    default_pattern = field_opt[:ruby_default] ? ", default: '#{field_opt[:ruby_default]}'" : ''
+    "\r\n  #{field_opt[:type]}: '#{field_name}'#{default_pattern}"
+  end
+
+  def parse_index(index)
+    deferrable_pattern = index[:deferrable] ? ", deferrable: #{index[:deferrable]}" : ''
+    "#{index[:columns]}, unique: #{index[:unique]}#{deferrable_pattern}\r\n"
+  end
 end
